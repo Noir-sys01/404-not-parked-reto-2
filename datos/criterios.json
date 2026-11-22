@@ -17,5 +17,9 @@
     "Bajo": [0, 4],
     "Medio": [5, 6],
     "Alto": [7, 9]
+  },
+  "recomendacion": {
+    "min_altos_en_pico": 3,
+    "proporcion_predominio": 0.5
   }
 }

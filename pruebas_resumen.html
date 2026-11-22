@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pruebas de resumen</title>
+  <style>
+    body { font-family: sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; }
+    .ok { color: green; } .mal { color: red; }
+  </style>
+</head>
+<body>
+  <h1>Pruebas de resumen.js</h1>
+  <div id="resultado">Cargando…</div>
+
+  <script src="criticidad.js"></script>
+  <script src="filtros.js"></script>
+  <script src="resumen.js"></script>
+  <script>
+    // Reportes de ejemplo (inventados). Cada uno ya trae su criticidad, como en reportes.json.
+    // Cuadras: A = CR5 (arterial), las demás secundarias.
+    const reportes = [
+      // Cuadra A: 4 reportes Alto en hora pico -> total 35
+      { id: "A1", cuadra: "CR5-C14-C15", categoria: "doble_fila",     actor: "vehiculo_particular",  fecha_hora: "2026-11-18T07:45", criticidad: { puntaje: 9, nivel: "Alto" } },
+      { id: "A2", cuadra: "CR5-C14-C15", categoria: "invasion_anden", actor: "mobiliario_comercial", fecha_hora: "2026-11-18T11:40", criticidad: { puntaje: 8, nivel: "Alto" } },
+      { id: "A3", cuadra: "CR5-C14-C15", categoria: "bloqueo_rampa_cebra_paradero", actor: "vehiculo_particular", fecha_hora: "2026-11-18T12:30", criticidad: { puntaje: 9, nivel: "Alto" } },
+      { id: "A4", cuadra: "CR5-C14-C15", categoria: "doble_fila",     actor: "motocicleta",          fecha_hora: "2026-11-18T18:00", criticidad: { puntaje: 9, nivel: "Alto" } },
+      // Cuadra B: 3 invasiones de andén -> total 16
+      { id: "B1", cuadra: "CR3-C14-C15", categoria: "invasion_anden", actor: "mobiliario_comercial", fecha_hora: "2026-11-18T11:50", criticidad: { puntaje: 6, nivel: "Medio" } },
+      { id: "B2", cuadra: "CR3-C14-C15", categoria: "invasion_anden", actor: "mobiliario_comercial", fecha_hora: "2026-11-18T13:00", criticidad: { puntaje: 6, nivel: "Medio" } },
+      { id: "B3", cuadra: "CR3-C14-C15", categoria: "invasion_anden", actor: "motocicleta",          fecha_hora: "2026-11-18T15:00", criticidad: { puntaje: 4, nivel: "Bajo" } },
+      // Cuadra C: 3 con vehículo de carga, solo 1 Alto en pico -> total 17
+      { id: "C1", cuadra: "CR7-C15-C16", categoria: "doble_fila",     actor: "vehiculo_carga",       fecha_hora: "2026-11-18T07:00", criticidad: { puntaje: 7, nivel: "Alto" } },
+      { id: "C2", cuadra: "CR7-C15-C16", categoria: "doble_fila",     actor: "vehiculo_carga",       fecha_hora: "2026-11-18T15:30", criticidad: { puntaje: 5, nivel: "Medio" } },
+      { id: "C3", cuadra: "CR7-C15-C16", categoria: "doble_fila",     actor: "vehiculo_carga",       fecha_hora: "2026-11-18T16:00", criticidad: { puntaje: 5, nivel: "Medio" } },
+      // Cuadra D: mezclada -> total 11
+      { id: "D1", cuadra: "CR2-C14-C15", categoria: "doble_fila",     actor: "vehiculo_particular",  fecha_hora: "2026-11-18T12:00", criticidad: { puntaje: 7, nivel: "Alto" } },
+      { id: "D2", cuadra: "CR2-C14-C15", categoria: "invasion_anden", actor: "mobiliario_comercial", fecha_hora: "2026-11-18T15:00", criticidad: { puntaje: 4, nivel: "Bajo" } },
+      // Cuadra E: mezclada -> total 10
+      { id: "E1", cuadra: "CR4-C16-C17", categoria: "doble_fila",     actor: "vehiculo_particular",  fecha_hora: "2026-11-18T15:00", criticidad: { puntaje: 5, nivel: "Medio" } },
+      { id: "E2", cuadra: "CR4-C16-C17", categoria: "bloqueo_rampa_cebra_paradero", actor: "motocicleta", fecha_hora: "2026-11-18T16:00", criticidad: { puntaje: 5, nivel: "Medio" } },
+      // Cuadra F: un solo reporte -> total 4 (queda fuera del top 5)
+      { id: "F1", cuadra: "CR6-C13-C14", categoria: "invasion_anden", actor: "mobiliario_comercial", fecha_hora: "2026-11-18T15:00", criticidad: { puntaje: 4, nivel: "Bajo" } }
+    ];
+
+    // Resultado esperado, calculado a mano (orden de mayor a menor puntaje).
+    const esperado = [
+      { cuadra: "CR5-C14-C15", puntajeTotal: 35, reglaId: "R1" },
+      { cuadra: "CR7-C15-C16", puntajeTotal: 17, reglaId: "R3" },
+      { cuadra: "CR3-C14-C15", puntajeTotal: 16, reglaId: "R2" },
+      { cuadra: "CR2-C14-C15", puntajeTotal: 11, reglaId: "R4" },
+      { cuadra: "CR4-C16-C17", puntajeTotal: 10, reglaId: "R4" }
+    ];
+
+    async function correr() {
+      const criterios = await (await fetch("datos/criterios.json")).json();
+      const r = resumenOperativo(reportes, criterios, 5);
+      let html = `<p>Cuadras en el resumen: <b>${r.length}</b> (esperadas: ${esperado.length}; la sexta, CR6-C13-C14, debe quedar fuera)</p>`;
+      for (let i = 0; i < esperado.length; i++) {
+        const s = r[i];
+        const e = esperado[i];
+        const bien = s && s.cuadra === e.cuadra && s.puntajeTotal === e.puntajeTotal && s.reglaId === e.reglaId;
+        html += `<p class="${bien ? "ok" : "mal"}">${bien ? "✔" : "✘"} Puesto ${i + 1}:
+                 ${s ? s.cuadra + " | " + s.puntajeTotal + " pts | " + s.recomendacion + "<br>&nbsp;&nbsp;&nbsp;Regla: " + s.regla : "(sin resultado)"}<br>
+                 &nbsp;&nbsp;&nbsp;A mano: ${e.cuadra} | ${e.puntajeTotal} pts | ${e.reglaId}</p>`;
+      }
+      document.getElementById("resultado").innerHTML = html;
+    }
+    correr().catch(e => document.getElementById("resultado").textContent = "Error: " + e.message);
+  </script>
+</body>
+</html>
