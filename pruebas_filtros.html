@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pruebas de filtros</title>
+  <style>
+    body { font-family: sans-serif; max-width: 680px; margin: 2rem auto; padding: 0 1rem; }
+    .ok { color: green; } .mal { color: red; }
+    table { border-collapse: collapse; font-size: 0.9rem; }
+    td, th { border: 1px solid #ccc; padding: 4px 8px; }
+  </style>
+</head>
+<body>
+  <h1>Pruebas de filtros.js</h1>
+  <div id="resultado">Cargando…</div>
+
+  <script src="criticidad.js"></script>
+  <script src="filtros.js"></script>
+  <script>
+    // Seis reportes de ejemplo (inventados, solo para probar).
+    const reportes = [
+      { id: "MP-001", cuadra: "CR5-C14-C15", categoria: "doble_fila",     actor: "vehiculo_particular",  fecha_hora: "2026-11-18T07:45" }, // pico
+      { id: "MP-002", cuadra: "CR5-C14-C15", categoria: "invasion_anden", actor: "mobiliario_comercial", fecha_hora: "2026-11-18T11:40" }, // pico
+      { id: "MP-003", cuadra: "CR5-C14-C15", categoria: "invasion_anden", actor: "mobiliario_comercial", fecha_hora: "2026-11-18T15:00" }, // valle
+      { id: "MP-004", cuadra: "CR3-C14-C15", categoria: "doble_fila",     actor: "motocicleta",          fecha_hora: "2026-11-18T12:10" }, // pico
+      { id: "MP-005", cuadra: "CR3-C14-C15", categoria: "invasion_anden", actor: "motocicleta",          fecha_hora: "2026-11-18T16:00" }, // valle
+      { id: "MP-006", cuadra: "CR3-C14-C15", categoria: "bloqueo_rampa_cebra_paradero", actor: "vehiculo_carga", fecha_hora: "2026-11-18T18:00" } // pico
+    ];
+
+    // Conteos hechos a mano mirando la lista de arriba (RF-04).
+    const casos = [
+      { nombre: "Sin filtros",                                  filtros: {},                                                                     esperado: 6 },
+      { nombre: "Categoría = invasión de andén",                filtros: { categoria: "invasion_anden" },                                        esperado: 3 },
+      { nombre: "Franja = pico + cuadra CR5-C14-C15",           filtros: { franja: "pico", cuadra: "CR5-C14-C15" },                             esperado: 2 },
+      { nombre: "Categoría = invasión de andén + franja valle", filtros: { categoria: "invasion_anden", franja: "valle" },                      esperado: 2 },
+      { nombre: "Actor = motocicleta + franja pico",            filtros: { actor: "motocicleta", franja: "pico" },                              esperado: 1 },
+      { nombre: "Cuadra CR3 + invasión de andén + valle",       filtros: { cuadra: "CR3-C14-C15", categoria: "invasion_anden", franja: "valle" }, esperado: 1 }
+    ];
+
+    async function correr() {
+      const criterios = await (await fetch("datos/criterios.json")).json();
+      let html = "";
+      for (const c of casos) {
+        const r = filtrarReportes(reportes, c.filtros, criterios);
+        const bien = r.length === c.esperado;
+        const ids = r.map(x => x.id).join(", ") || "ninguno";
+        html += `<p class="${bien ? "ok" : "mal"}">${bien ? "✔" : "✘"} ${c.nombre}<br>
+                 Sistema: ${r.length} (${ids}) | A mano: ${c.esperado}</p>`;
+      }
+      document.getElementById("resultado").innerHTML = html;
+    }
+    correr().catch(e => document.getElementById("resultado").textContent = "Error: " + e.message);
+  </script>
+</body>
+</html>
