@@ -1,0 +1,32 @@
+:root {
+  --alto: #c0392b;
+  --medio: #e08e0b;
+  --bajo: #2e8b57;
+  --tinta: #1f2a37;
+  --fondo-panel: #f5f6f8;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: var(--tinta); }
+body { display: flex; }
+
+#panel { width: 320px; padding: 16px; overflow-y: auto; background: var(--fondo-panel); }
+#mapa { flex: 1; }          /* Leaflet necesita que el contenedor tenga altura */
+
+h1 { font-size: 1.15rem; margin: 0 0 8px; }
+h2 { font-size: 1rem; margin: 18px 0 6px; }
+.aviso { background: #fff3cd; padding: 6px 8px; border-radius: 4px; font-size: .85rem; margin: 0 0 12px; }
+.contador { font-size: 1rem; }
+.leyenda { list-style: none; padding: 0; margin: 0; }
+.leyenda li { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.punto { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.punto.alto { background: var(--alto); }
+.punto.medio { background: var(--medio); }
+.punto.bajo { background: var(--bajo); }
+#detalle { font-size: .92rem; line-height: 1.4; }
+
+/* Adaptación a celular: el panel pasa arriba y el mapa abajo */
+@media (max-width: 700px) {
+  body { flex-direction: column; }
+  #panel { width: 100%; max-height: 38vh; }
+  #mapa { min-height: 62vh; }
+}

@@ -1,0 +1,14 @@
+/* Estilos de los filtros, el resumen y la impresión. Se carga después de estilos.css */
+.filtros label { display: block; font-size: .85rem; margin: 6px 0; }
+.filtros select { width: 100%; padding: 4px; margin-top: 2px; }
+.capa { display: block; font-size: .9rem; margin: 4px 0; }
+#resumen { padding-left: 20px; margin: 0 0 8px; font-size: .88rem; line-height: 1.35; }
+#resumen li { margin-bottom: 8px; }
+#resumen small { color: #555; }
+#btn-imprimir { padding: 6px 10px; cursor: pointer; }
+
+/* Al imprimir solo sale el panel (resumen y filtros), sin el mapa */
+@media print {
+  #mapa, #btn-imprimir { display: none; }
+  #panel { width: 100%; max-height: none; overflow: visible; }
+}
