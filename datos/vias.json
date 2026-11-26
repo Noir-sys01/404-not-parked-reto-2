@@ -1,4 +1,11 @@
 {
   "CR5-C14-C15": "arterial",
-  "CR3-C14-C15": "secundaria"
+  "CR3-C14-C15": "secundaria",
+  "CR7-C15-C16": "secundaria",
+  "CR4-C16-C17": "secundaria",
+  "C29H3-CR22-CR21E": "arterial",
+  "C29H3-CR21E-CR21D": "arterial",
+  "C29H3-CR21D-CR21C": "arterial",
+  "C29I-CR22-CR21E": "secundaria",
+  "C29I1-CR22-CR21E": "secundaria"
 }

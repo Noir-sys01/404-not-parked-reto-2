@@ -1,0 +1,142 @@
+[
+  {
+    "id": "MP-001",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T07:30",
+    "lat": 11.2225,
+    "lng": -74.187,
+    "cuadra": "CR5-C14-C15",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_particular"
+  },
+  {
+    "id": "MP-002",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T12:40",
+    "lat": 11.2226,
+    "lng": -74.1869,
+    "cuadra": "CR5-C14-C15",
+    "categoria": "invasion_anden",
+    "actor": "mobiliario_comercial"
+  },
+  {
+    "id": "MP-003",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T12:50",
+    "lat": 11.2224,
+    "lng": -74.1871,
+    "cuadra": "CR5-C14-C15",
+    "categoria": "bloqueo_rampa_cebra_paradero",
+    "actor": "vehiculo_particular"
+  },
+  {
+    "id": "MP-004",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T18:30",
+    "lat": 11.2225,
+    "lng": -74.1868,
+    "cuadra": "CR5-C14-C15",
+    "categoria": "doble_fila",
+    "actor": "motocicleta"
+  },
+  {
+    "id": "MP-005",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T15:00",
+    "lat": 11.2227,
+    "lng": -74.187,
+    "cuadra": "CR5-C14-C15",
+    "categoria": "invasion_anden",
+    "actor": "mobiliario_comercial"
+  },
+  {
+    "id": "MP-006",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T12:10",
+    "lat": 11.2218,
+    "lng": -74.186,
+    "cuadra": "CR3-C14-C15",
+    "categoria": "invasion_anden",
+    "actor": "mobiliario_comercial"
+  },
+  {
+    "id": "MP-007",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T13:00",
+    "lat": 11.2219,
+    "lng": -74.1861,
+    "cuadra": "CR3-C14-C15",
+    "categoria": "invasion_anden",
+    "actor": "mobiliario_comercial"
+  },
+  {
+    "id": "MP-008",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T15:30",
+    "lat": 11.2217,
+    "lng": -74.1859,
+    "cuadra": "CR3-C14-C15",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta"
+  },
+  {
+    "id": "MP-009",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T07:00",
+    "lat": 11.223,
+    "lng": -74.1855,
+    "cuadra": "CR7-C15-C16",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_carga"
+  },
+  {
+    "id": "MP-010",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T15:30",
+    "lat": 11.2231,
+    "lng": -74.1856,
+    "cuadra": "CR7-C15-C16",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_carga"
+  },
+  {
+    "id": "MP-011",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T16:00",
+    "lat": 11.2229,
+    "lng": -74.1854,
+    "cuadra": "CR7-C15-C16",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_carga"
+  },
+  {
+    "id": "MP-012",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T15:00",
+    "lat": 11.2215,
+    "lng": -74.1875,
+    "cuadra": "CR4-C16-C17",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_particular"
+  },
+  {
+    "id": "MP-013",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T16:30",
+    "lat": 11.2216,
+    "lng": -74.1876,
+    "cuadra": "CR4-C16-C17",
+    "categoria": "bloqueo_rampa_cebra_paradero",
+    "actor": "motocicleta"
+  },
+  {
+    "id": "MP-014",
+    "origen": "ejemplo",
+    "fecha_hora": "2026-11-18T09:00",
+    "lat": 11.2214,
+    "lng": -74.1874,
+    "cuadra": "CR4-C16-C17",
+    "categoria": "invasion_anden",
+    "actor": "mobiliario_comercial"
+  }
+]
