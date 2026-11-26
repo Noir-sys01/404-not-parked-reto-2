@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Control de Mal Parqueo · Entorno Universidad del Magdalena</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <aside id="panel">
+    <header class="cabecera">
+      <h1>Mal parqueo y espacio público</h1>
+      <p class="subtitulo">Entorno Universidad del Magdalena · Santa Marta</p>
+    </header>
+
+    <nav class="tabs" aria-label="Vistas principales">
+      <button type="button" class="tab-btn activa" data-vista="vista-tablero">Tablero y Mapa</button>
+      <button type="button" class="tab-btn" data-vista="vista-captura">+ Reportar (&lt; 30 s)</button>
+    </nav>
+
+    <!-- VISTA 1: TABLERO (FILTROS, CAPAS, DETALLE Y RESUMEN OPERATIVO) -->
+    <section id="vista-tablero" class="vista-panel activa">
+      <div class="tarjeta-kpi">
+        <div class="kpi-principal">
+          <strong id="contador">0</strong>
+          <span>reportes visibles</span>
+        </div>
+        <div class="kpi-niveles">
+          <span class="pill alto">Alto: <strong id="conteo-alto">0</strong></span>
+          <span class="pill medio">Medio: <strong id="conteo-medio">0</strong></span>
+          <span class="pill bajo">Bajo: <strong id="conteo-bajo">0</strong></span>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <h2>Capas y leyenda</h2>
+        <div class="controles-capas">
+          <label><input type="checkbox" id="toggle-calor" checked> Mapa de calor</label>
+          <label><input type="checkbox" id="toggle-puntos" checked> Puntos individuales</label>
+        </div>
+        <ul class="leyenda">
+          <li><span class="punto alto"></span> Criticidad alta (7 a 9)</li>
+          <li><span class="punto medio"></span> Criticidad media (5 a 6)</li>
+          <li><span class="punto bajo"></span> Criticidad baja (0 a 4)</li>
+        </ul>
+      </div>
+
+      <div class="bloque">
+        <div class="bloque-titulo">
+          <h2>Filtros</h2>
+          <button type="button" id="btn-limpiar-filtros" class="btn-link">Limpiar</button>
+        </div>
+        <div class="grid-filtros">
+          <label>Cuadra / tramo
+            <select id="filtro-cuadra">
+              <option value="todas">Todas las cuadras</option>
+            </select>
+          </label>
+          <label>Franja horaria
+            <select id="filtro-franja">
+              <option value="todas">Todas (pico y valle)</option>
+              <option value="pico">Hora pico</option>
+              <option value="valle">Hora valle</option>
+            </select>
+          </label>
+          <label>Categoría
+            <select id="filtro-categoria">
+              <option value="todas">Todas las categorías</option>
+              <option value="invasion_anden">Invasión de andén</option>
+              <option value="doble_fila">Doble fila / vía prohibida</option>
+              <option value="bloqueo_rampa_cebra_paradero">Bloqueo rampa, cebra o paradero</option>
+            </select>
+          </label>
+          <label>Actor
+            <select id="filtro-actor">
+              <option value="todos">Todos los actores</option>
+              <option value="motocicleta">Motocicleta</option>
+              <option value="vehiculo_particular">Vehículo particular</option>
+              <option value="vehiculo_carga">Vehículo de carga descargando</option>
+              <option value="mobiliario_comercial">Mobiliario comercial</option>
+            </select>
+          </label>
+          <label>Nivel de criticidad
+            <select id="filtro-nivel">
+              <option value="todos">Todos los niveles</option>
+              <option value="Alto">Alto (7–9)</option>
+              <option value="Medio">Medio (5–6)</option>
+              <option value="Bajo">Bajo (0–4)</option>
+            </select>
+          </label>
+        </div>
+        <ul id="desglose-categorias" class="lista-porcentajes"></ul>
+      </div>
+
+      <div class="bloque">
+        <h2>Detalle del reporte</h2>
+        <div id="detalle">Toca un punto del mapa para ver su información y evidencia.</div>
+      </div>
+
+      <div class="bloque" id="bloque-resumen">
+        <div class="bloque-titulo">
+          <h2>Resumen operativo (Top 5)</h2>
+          <button type="button" id="btn-imprimir" class="btn-secundario">Imprimir</button>
+        </div>
+        <div id="lista-resumen"></div>
+      </div>
+
+      <div class="bloque">
+        <h2>Sincronización JSON</h2>
+        <div class="fila-botones">
+          <button type="button" id="btn-exportar" class="btn-secundario">Exportar JSON</button>
+          <label class="btn-secundario btn-archivo">
+            Importar JSON
+            <input type="file" id="input-importar" accept=".json,application/json">
+          </label>
+        </div>
+        <p id="estado-importacion" class="texto-ayuda"></p>
+      </div>
+    </section>
+
+    <!-- VISTA 2: CAPTURA RÁPIDA EN CELULAR (< 30 SEGUNDOS) -->
+    <section id="vista-captura" class="vista-panel">
+      <h2>Nuevo reporte en campo</h2>
+      <p class="texto-ayuda">Marca la ubicación, elige categoría y actor, y guarda en menos de 30 segundos.</p>
+
+      <form id="form-captura" class="form-captura">
+        <div class="grupo-campo">
+          <span class="etiqueta-campo">1. Ubicación</span>
+          <div class="fila-botones">
+            <button type="button" id="btn-gps" class="btn-secundario">Usar mi GPS</button>
+            <button type="button" id="btn-pin-mapa" class="btn-secundario">Marcar en el mapa</button>
+          </div>
+          <div class="fila-coords">
+            <input type="number" step="any" id="cap-lat" placeholder="Latitud" required>
+            <input type="number" step="any" id="cap-lng" placeholder="Longitud" required>
+          </div>
+          <small id="cap-ubicacion-estado">Sin ubicación marcada aún.</small>
+        </div>
+
+        <label class="grupo-campo">
+          <span class="etiqueta-campo">2. Cuadra / tramo</span>
+          <select id="cap-cuadra" required></select>
+        </label>
+
+        <label class="grupo-campo">
+          <span class="etiqueta-campo">3. Categoría de obstrucción</span>
+          <select id="cap-categoria" required>
+            <option value="invasion_anden">Invasión de andén</option>
+            <option value="doble_fila">Doble fila / vía prohibida</option>
+            <option value="bloqueo_rampa_cebra_paradero">Bloqueo de rampa, cebra o paradero</option>
+          </select>
+        </label>
+
+        <label class="grupo-campo">
+          <span class="etiqueta-campo">4. Tipo de actor</span>
+          <select id="cap-actor" required>
+            <option value="motocicleta">Motocicleta</option>
+            <option value="vehiculo_particular">Vehículo particular</option>
+            <option value="vehiculo_carga">Vehículo de carga descargando</option>
+            <option value="mobiliario_comercial">Mobiliario comercial</option>
+          </select>
+        </label>
+
+        <label class="grupo-campo">
+          <span class="etiqueta-campo">5. Referencia corta (opcional)</span>
+          <input type="text" id="cap-referencia" maxlength="80" placeholder="Ej. Frente a D1 / esquina 29H3">
+        </label>
+
+        <label class="grupo-campo">
+          <span class="etiqueta-campo">6. Fecha y hora</span>
+          <input type="datetime-local" id="cap-fecha-hora" required>
+        </label>
+
+        <label class="grupo-campo">
+          <span class="etiqueta-campo">7. Foto anonimizada (opcional, máx. 800 px)</span>
+          <input type="file" id="cap-foto" accept="image/*" capture="environment">
+          <div id="cap-foto-preview" class="preview-foto"></div>
+        </label>
+
+        <button type="submit" class="btn-primario">Guardar reporte en el mapa</button>
+        <p id="cap-mensaje" class="texto-ayuda"></p>
+      </form>
+    </section>
+  </aside>
+
+  <main id="mapa"></main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+  <script src="criticidad.js"></script>
+  <script src="filtros.js"></script>
+  <script src="resumen.js"></script>
+  <script src="captura.js"></script>
+  <script src="mapa.js"></script>
+</body>
+</html>

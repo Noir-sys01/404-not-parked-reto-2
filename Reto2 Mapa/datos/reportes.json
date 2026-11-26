@@ -1,0 +1,890 @@
+[
+  {
+    "id": "MP-001",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:10",
+    "lat": 11.226297,
+    "lng": -74.18864,
+    "cuadra": "29H3 - tramo 1",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_particular",
+    "referencia": "enfrente sandro",
+    "observaciones": "Parqueo al lado de señal de prohibido",
+    "foto": "fotos/mp-001.png",
+    "criticidad": {
+      "puntaje": 9,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 3,
+        "tipo_via": "arterial",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-002",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:11",
+    "lat": 11.226297,
+    "lng": -74.188662,
+    "cuadra": "29H3 - tramo 1",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_particular",
+    "referencia": "diagonal donde sandro",
+    "observaciones": "parquea en una zona con prohibido parqueo",
+    "foto": "fotos/mp-002.png",
+    "criticidad": {
+      "puntaje": 9,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 3,
+        "tipo_via": "arterial",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-003",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:12",
+    "lat": 11.226282,
+    "lng": -74.188706,
+    "cuadra": "29H3 - tramo 1",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_particular",
+    "referencia": "enfrente cajero bancolimbia",
+    "observaciones": "Parqueo en zona indevida",
+    "foto": "fotos/mp-003.png",
+    "criticidad": {
+      "puntaje": 9,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 3,
+        "tipo_via": "arterial",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-004",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:13",
+    "lat": 11.226255,
+    "lng": -74.188803,
+    "cuadra": "29H3 - tramo 1",
+    "categoria": "doble_fila",
+    "actor": "motocicleta",
+    "referencia": "Enfrente panaderia",
+    "observaciones": "",
+    "foto": "fotos/mp-004.png",
+    "criticidad": {
+      "puntaje": 9,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 3,
+        "tipo_via": "arterial",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-005",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:14",
+    "lat": 11.226229,
+    "lng": -74.188876,
+    "cuadra": "29H3 - tramo 1",
+    "categoria": "doble_fila",
+    "actor": "motocicleta",
+    "referencia": "Enfrente supergiros",
+    "observaciones": "",
+    "foto": "fotos/mp-005.png",
+    "criticidad": {
+      "puntaje": 9,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 3,
+        "tipo_via": "arterial",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-006",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:18",
+    "lat": 11.22617,
+    "lng": -74.189094,
+    "cuadra": "29H3 - tramo 2",
+    "categoria": "bloqueo_rampa_cebra_paradero",
+    "actor": "motocicleta",
+    "referencia": "Enfrente a una barberia",
+    "observaciones": "",
+    "foto": "fotos/mp-006.png",
+    "criticidad": {
+      "puntaje": 9,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 3,
+        "tipo_via": "arterial",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-007",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:20",
+    "lat": 11.226151,
+    "lng": -74.189157,
+    "cuadra": "29H3 - tramo 2",
+    "categoria": "invasion_anden",
+    "actor": "mobiliario_comercial",
+    "referencia": "Diagonal a mood",
+    "observaciones": "Renumerado desde 008; registro válido",
+    "foto": "fotos/mp-007.png",
+    "criticidad": {
+      "puntaje": 8,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 2,
+        "via": 3,
+        "franja": 3,
+        "tipo_via": "arterial",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-008",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:32",
+    "lat": 11.2256,
+    "lng": -74.189313,
+    "cuadra": "29I",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_particular",
+    "referencia": "Enfrente billar samario",
+    "observaciones": "",
+    "foto": "fotos/mp-008.png",
+    "criticidad": {
+      "puntaje": 7,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 1,
+        "franja": 3,
+        "tipo_via": "secundaria",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-009",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:32",
+    "lat": 11.2256,
+    "lng": -74.189161,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "Diagonal billar samario dos casas a la izq",
+    "observaciones": "",
+    "foto": "fotos/mp-009.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 3,
+        "tipo_via": "secundaria",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-010",
+    "origen": "campo",
+    "fecha_hora": "2026-11-25T18:32",
+    "lat": 11.225666,
+    "lng": -74.189329,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Enfrente billar samario",
+    "observaciones": "",
+    "foto": "fotos/mp-010.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 3,
+        "tipo_via": "secundaria",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-011",
+    "origen": "campo",
+    "fecha_hora": "2026-11-26T10:22",
+    "lat": 11.226302,
+    "lng": -74.188644,
+    "cuadra": "29H3 - tramo 1",
+    "categoria": "doble_fila",
+    "actor": "vehiculo_particular",
+    "referencia": "Enfrente los fritos donde sandro",
+    "observaciones": "",
+    "foto": "fotos/mp-011.png",
+    "criticidad": {
+      "puntaje": 7,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 1,
+        "tipo_via": "arterial",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-012",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:24",
+    "lat": 11.225897,
+    "lng": -74.189625,
+    "cuadra": "29H3 - tramo 2",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "cerca de jokers",
+    "observaciones": "",
+    "foto": "fotos/mp-012.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 3,
+        "franja": 1,
+        "tipo_via": "arterial",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-013",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:24",
+    "lat": 11.22567,
+    "lng": -74.189919,
+    "cuadra": "29H3 - tramo 2",
+    "categoria": "bloqueo_rampa_cebra_paradero",
+    "actor": "motocicleta",
+    "referencia": "Enfrente zapateria",
+    "observaciones": "",
+    "foto": "fotos/mp-013.png",
+    "criticidad": {
+      "puntaje": 7,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 1,
+        "tipo_via": "arterial",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-014",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:25",
+    "lat": 11.225246,
+    "lng": -74.190473,
+    "cuadra": "29H3 - tramo 2",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Enfrente D1",
+    "observaciones": "",
+    "foto": "fotos/mp-014.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 3,
+        "franja": 1,
+        "tipo_via": "arterial",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-015",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:28",
+    "lat": 11.225193,
+    "lng": -74.190308,
+    "cuadra": "29H3 - tramo 2",
+    "categoria": "bloqueo_rampa_cebra_paradero",
+    "actor": "motocicleta",
+    "referencia": "Enfrente mood",
+    "observaciones": "",
+    "foto": "fotos/mp-015.png",
+    "criticidad": {
+      "puntaje": 7,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 3,
+        "via": 3,
+        "franja": 1,
+        "tipo_via": "arterial",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-016",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:29",
+    "lat": 11.225535,
+    "lng": -74.189508,
+    "cuadra": "29I1",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Calle 29I 1",
+    "observaciones": "",
+    "foto": "fotos/mp-016.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-017",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:31",
+    "lat": 11.225546,
+    "lng": -74.18934,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "Enfrente villar samario",
+    "observaciones": "",
+    "foto": "fotos/mp-017.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-018",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:31",
+    "lat": 11.225582,
+    "lng": -74.189222,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Diaogonal villar samario",
+    "observaciones": "",
+    "foto": "fotos/mp-018.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-019",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:31",
+    "lat": 11.225597,
+    "lng": -74.189156,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "Calle 29I",
+    "observaciones": "",
+    "foto": "fotos/mp-019.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-020",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:31",
+    "lat": 11.225617,
+    "lng": -74.189035,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Calle 29I",
+    "observaciones": "",
+    "foto": "fotos/mp-020.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-021",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:31",
+    "lat": 11.225699,
+    "lng": -74.188897,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "Calle 29I",
+    "observaciones": "",
+    "foto": "fotos/mp-021.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-022",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:31",
+    "lat": 11.225655,
+    "lng": -74.188811,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "Calle 29I",
+    "observaciones": "",
+    "foto": "fotos/mp-022.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-023",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:31",
+    "lat": 11.225685,
+    "lng": -74.188706,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Calle 29I",
+    "observaciones": "",
+    "foto": "fotos/mp-023.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-024",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T10:31",
+    "lat": 11.225716,
+    "lng": -74.188626,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Calle 29I",
+    "observaciones": "",
+    "foto": "fotos/mp-024.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-025",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:32",
+    "lat": 11.226138,
+    "lng": -74.188775,
+    "cuadra": "29H3 - tramo 1",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Al lado de los fritos azules",
+    "observaciones": "",
+    "foto": "fotos/mp-025.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 3,
+        "franja": 1,
+        "tipo_via": "arterial",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-026",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:33",
+    "lat": 11.226134,
+    "lng": -74.188743,
+    "cuadra": "29H3 - tramo 1",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Frente a supergiro",
+    "observaciones": "",
+    "foto": "fotos/mp-026.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 3,
+        "franja": 1,
+        "tipo_via": "arterial",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-027",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:35",
+    "lat": 11.226132,
+    "lng": -74.189309,
+    "cuadra": "29H3 - tramo 2",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Entrada d1",
+    "observaciones": "",
+    "foto": "fotos/mp-027.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 3,
+        "franja": 1,
+        "tipo_via": "arterial",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-028",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:35",
+    "lat": 11.225342,
+    "lng": -74.190386,
+    "cuadra": "29I1",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "Diagonal a mood",
+    "observaciones": "",
+    "foto": "fotos/mp-028.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-029",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:35",
+    "lat": 11.225687,
+    "lng": -74.18936,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "A la derecha del billar",
+    "observaciones": "",
+    "foto": "fotos/mp-029.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-030",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:36",
+    "lat": 11.225191,
+    "lng": -74.189878,
+    "cuadra": "29I1",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "mitad de cuadra",
+    "observaciones": "",
+    "foto": "fotos/mp-030.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-031",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:36",
+    "lat": 11.225317,
+    "lng": -74.189597,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "Final de cuadra",
+    "observaciones": "",
+    "foto": "fotos/mp-031.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-032",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:39",
+    "lat": 11.225298,
+    "lng": -74.189553,
+    "cuadra": "29I1",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Esquina que conecta con C29H",
+    "observaciones": "",
+    "foto": "fotos/mp-032.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-033",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T11:40",
+    "lat": 11.225557,
+    "lng": -74.189278,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "diagonal billar samario",
+    "observaciones": "",
+    "foto": "fotos/mp-033.png",
+    "criticidad": {
+      "puntaje": 4,
+      "nivel": "Bajo",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 1,
+        "tipo_via": "secundaria",
+        "franja_horaria": "valle"
+      }
+    }
+  },
+  {
+    "id": "MP-034",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T13:19",
+    "lat": 11.225702,
+    "lng": -74.188665,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Al lado restaurante amarillo",
+    "observaciones": "",
+    "foto": "fotos/mp-034.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 3,
+        "tipo_via": "secundaria",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-035",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T13:19",
+    "lat": 11.2257,
+    "lng": -74.18886,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "vehiculo_particular",
+    "referencia": "A media cuadra",
+    "observaciones": "",
+    "foto": "fotos/mp-035.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 3,
+        "tipo_via": "secundaria",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-036",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T13:20",
+    "lat": 11.225618,
+    "lng": -74.189062,
+    "cuadra": "29I",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "diagonal billar a dos casas a la izq",
+    "observaciones": "",
+    "foto": "fotos/mp-036.png",
+    "criticidad": {
+      "puntaje": 6,
+      "nivel": "Medio",
+      "desglose": {
+        "categoria": 2,
+        "via": 1,
+        "franja": 3,
+        "tipo_via": "secundaria",
+        "franja_horaria": "pico"
+      }
+    }
+  },
+  {
+    "id": "MP-037",
+    "origen": "campo",
+    "fecha_hora": "2026-11-27T13:25",
+    "lat": 11.224577,
+    "lng": -74.191085,
+    "cuadra": "29H3 - tramo 3",
+    "categoria": "invasion_anden",
+    "actor": "motocicleta",
+    "referencia": "Enfrente pizzeria",
+    "observaciones": "",
+    "foto": "fotos/mp-037.png",
+    "criticidad": {
+      "puntaje": 8,
+      "nivel": "Alto",
+      "desglose": {
+        "categoria": 2,
+        "via": 3,
+        "franja": 3,
+        "tipo_via": "arterial",
+        "franja_horaria": "pico"
+      }
+    }
+  }
+]

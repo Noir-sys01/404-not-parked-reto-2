@@ -1,0 +1,45 @@
+{
+  "_nota": "Clasificación confirmada en campo alrededor de la Universidad del Magdalena (Santa Marta).",
+  "cuadras": [
+    {
+      "id": "29H3 - tramo 1",
+      "descripcion": "Calle 29H3 - Tramo 1 (sector Sandro / Bancolombia / SuperGiros)",
+      "via": "Calle 29H3",
+      "tipo": "arterial",
+      "sentido": "doble sentido",
+      "confirmado": true
+    },
+    {
+      "id": "29H3 - tramo 2",
+      "descripcion": "Calle 29H3 - Tramo 2 (sector Barbería / Jokers / D1 / Mood)",
+      "via": "Calle 29H3",
+      "tipo": "arterial",
+      "sentido": "doble sentido",
+      "confirmado": true
+    },
+    {
+      "id": "29H3 - tramo 3",
+      "descripcion": "Calle 29H3 - Tramo 3 (sector Pizzería)",
+      "via": "Calle 29H3",
+      "tipo": "arterial",
+      "sentido": "doble sentido",
+      "confirmado": true
+    },
+    {
+      "id": "29I",
+      "descripcion": "Calle 29I (sector Billar Samario / Restaurante Amarillo)",
+      "via": "Calle 29I",
+      "tipo": "secundaria",
+      "sentido": "doble sentido",
+      "confirmado": true
+    },
+    {
+      "id": "29I1",
+      "descripcion": "Calle 29I1 (conexión Calle 29H / sector Mood)",
+      "via": "Calle 29I1",
+      "tipo": "secundaria",
+      "sentido": "doble sentido",
+      "confirmado": true
+    }
+  ]
+}
