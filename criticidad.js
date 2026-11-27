@@ -47,7 +47,8 @@
   function obtenerTipoVia(cuadraId, viasData) {
     const lista = (viasData && Array.isArray(viasData.cuadras)) ? viasData.cuadras : [];
     const encontrada = lista.find(function (c) { return c.id === cuadraId; });
-    return encontrada ? encontrada.tipo : "secundaria";
+    // Si la cuadra no está en vias.json se devuelve null (antes se asumía "secundaria" sin avisar).
+    return encontrada ? encontrada.tipo : null;
   }
 
   // Convierte el puntaje numérico en "Bajo", "Medio" o "Alto" usando criterios.json
@@ -71,13 +72,20 @@
   // Función principal RF-02: recibe un reporte y devuelve puntaje, nivel y desglose
   function calcularCriticidad(reporte, viasData, criterios) {
     const tipoVia = obtenerTipoVia(reporte.cuadra, viasData);
+    if (tipoVia === null) {
+      throw new Error('la cuadra "' + reporte.cuadra + '" no está en vias.json');
+    }
     const franjaHoraria = deducirFranja(reporte.fecha_hora, criterios.horas_pico);
 
-    const pesoCategoria = Number((criterios.categoria && criterios.categoria[reporte.categoria]) || 0);
-    const pesoVia = Number((criterios.via && criterios.via[tipoVia]) || 0);
-    const pesoFranja = Number((criterios.franja && criterios.franja[franjaHoraria]) || 0);
+    // Cada peso debe existir en criterios.json; si falta, se avisa en lugar de sumar 0 en silencio.
+    const pesoCategoria = (criterios.categoria || {})[reporte.categoria];
+    const pesoVia = (criterios.via || {})[tipoVia];
+    const pesoFranja = (criterios.franja || {})[franjaHoraria];
+    if (pesoCategoria === undefined) throw new Error('categoría desconocida: "' + reporte.categoria + '"');
+    if (pesoVia === undefined) throw new Error('tipo de vía desconocido en criterios.json: "' + tipoVia + '"');
+    if (pesoFranja === undefined) throw new Error('franja desconocida en criterios.json: "' + franjaHoraria + '"');
 
-    const puntaje = pesoCategoria + pesoVia + pesoFranja;
+    const puntaje = Number(pesoCategoria) + Number(pesoVia) + Number(pesoFranja);
     const nivel = clasificarNivel(puntaje, criterios.niveles);
 
     return {
@@ -93,13 +101,29 @@
     };
   }
 
-  // Recalcula la criticidad de todos los reportes (permite cambiar pesos en criterios.json y ver el efecto al instante)
+  // Reportes que no se pudieron calcular en la última llamada a recalcularTodos
+  let ultimosErrores = [];
+
+  // Recalcula la criticidad de todos los reportes (permite cambiar pesos en criterios.json y ver el efecto al instante).
+  // Los reportes con datos inválidos (cuadra desconocida, categoría rara...) se omiten y se registran en obtenerErrores().
   function recalcularTodos(reportes, viasData, criterios) {
-    return reportes.map(function (r) {
-      const copia = Object.assign({}, r);
-      copia.criticidad = calcularCriticidad(copia, viasData, criterios);
-      return copia;
+    ultimosErrores = [];
+    const validos = [];
+    reportes.forEach(function (r) {
+      try {
+        const copia = Object.assign({}, r);
+        copia.criticidad = calcularCriticidad(copia, viasData, criterios);
+        validos.push(copia);
+      } catch (e) {
+        ultimosErrores.push({ id: r.id || "(sin id)", mensaje: e.message });
+        console.warn("Reporte omitido " + (r.id || "(sin id)") + ": " + e.message);
+      }
     });
+    return validos;
+  }
+
+  function obtenerErrores() {
+    return ultimosErrores.slice();
   }
 
   global.Criticidad = {
@@ -109,6 +133,7 @@
     obtenerTipoVia: obtenerTipoVia,
     clasificarNivel: clasificarNivel,
     calcularCriticidad: calcularCriticidad,
-    recalcularTodos: recalcularTodos
+    recalcularTodos: recalcularTodos,
+    obtenerErrores: obtenerErrores
   };
 })(window);

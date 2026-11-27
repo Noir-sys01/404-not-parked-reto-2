@@ -3,7 +3,28 @@
 (function (global) {
   "use strict";
 
-  function aplicarReglas(grupo) {
+  // Valores de respaldo: solo se usan si criterios.json no trae la sección "recomendacion".
+  const UMBRALES_POR_DEFECTO = {
+    min_altos_en_pico: 3,
+    umbral_carga: 0.4,
+    umbral_predominio: 0.5
+  };
+
+  function leerUmbrales(criterios) {
+    const r = (criterios && criterios.recomendacion) || {};
+    return {
+      min_altos_en_pico: r.min_altos_en_pico !== undefined ? r.min_altos_en_pico : UMBRALES_POR_DEFECTO.min_altos_en_pico,
+      umbral_carga: r.umbral_carga !== undefined ? r.umbral_carga : UMBRALES_POR_DEFECTO.umbral_carga,
+      umbral_predominio: r.umbral_predominio !== undefined ? r.umbral_predominio : UMBRALES_POR_DEFECTO.umbral_predominio
+    };
+  }
+
+  function porcentaje(x) {
+    return Math.round(x * 100) + " %";
+  }
+
+  function aplicarReglas(grupo, umbrales) {
+    const u = umbrales || UMBRALES_POR_DEFECTO;
     const n = grupo.totalReportes;
     const altoPico = grupo.altoEnPico;
     const cAnden = grupo.categorias.invasion_anden || 0;
@@ -12,42 +33,42 @@
     const aCarga = grupo.actores.vehiculo_carga || 0;
 
     // Regla R1: 3 o más reportes de nivel Alto en hora pico
-    if (altoPico >= 3) {
+    if (altoPico >= u.min_altos_en_pico) {
       return {
         recomendacion: "Patrullaje prioritario en hora pico",
-        regla: "Regla R1: " + altoPico + " reportes de nivel Alto en hora pico (umbral ≥ 3)."
+        regla: "Regla R1: " + altoPico + " reportes de nivel Alto en hora pico (umbral ≥ " + u.min_altos_en_pico + ")."
       };
     }
 
     // Regla R2: Predomina vehículo de carga descargando (>= 40 %)
-    if (n > 0 && (aCarga / n) >= 0.4) {
+    if (n > 0 && (aCarga / n) >= u.umbral_carga) {
       return {
         recomendacion: "Revisar horario de cargue y descargue",
-        regla: "Regla R2: Predomina vehículo de carga (" + aCarga + " de " + n + " reportes, ≥ 40 %)."
+        regla: "Regla R2: Predomina vehículo de carga (" + aCarga + " de " + n + " reportes, ≥ " + porcentaje(u.umbral_carga) + ")."
       };
     }
 
     // Regla R3: Predomina invasión de andén (> 50 %)
-    if (n > 0 && (cAnden / n) > 0.5) {
+    if (n > 0 && (cAnden / n) > u.umbral_predominio) {
       return {
         recomendacion: "Operativo de espacio público y recuperación de andén",
-        regla: "Regla R3: Predomina invasión de andén (" + cAnden + " de " + n + " reportes, > 50 %)."
+        regla: "Regla R3: Predomina invasión de andén (" + cAnden + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
       };
     }
 
     // Regla R4: Predomina doble fila / vía prohibida (> 50 %)
-    if (n > 0 && (cDoble / n) > 0.5) {
+    if (n > 0 && (cDoble / n) > u.umbral_predominio) {
       return {
         recomendacion: "Control de estacionamiento en vía prohibida y señalización",
-        regla: "Regla R4: Predomina doble fila / vía prohibida (" + cDoble + " de " + n + " reportes, > 50 %)."
+        regla: "Regla R4: Predomina doble fila / vía prohibida (" + cDoble + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
       };
     }
 
     // Regla R5: Predomina bloqueo de rampa, cebra o paradero (> 50 %)
-    if (n > 0 && (cBloqueo / n) > 0.5) {
+    if (n > 0 && (cBloqueo / n) > u.umbral_predominio) {
       return {
         recomendacion: "Despeje prioritario de cruces peatonales, rampas y paraderos",
-        regla: "Regla R5: Predomina bloqueo de rampa, cebra o paradero (" + cBloqueo + " de " + n + " reportes, > 50 %)."
+        regla: "Regla R5: Predomina bloqueo de rampa, cebra o paradero (" + cBloqueo + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
       };
     }
 
@@ -58,7 +79,8 @@
     };
   }
 
-  function generarResumenOperativo(reportes, viasData) {
+  function generarResumenOperativo(reportes, viasData, criterios) {
+    const umbrales = leerUmbrales(criterios);
     const mapaCuadras = {};
     const infoVias = {};
 
@@ -107,7 +129,7 @@
     });
 
     return grupos.slice(0, 5).map(function (g, indice) {
-      const decision = aplicarReglas(g);
+      const decision = aplicarReglas(g, umbrales);
       return Object.assign({}, g, {
         posicion: indice + 1,
         recomendacion: decision.recomendacion,
@@ -118,6 +140,7 @@
 
   global.Resumen = {
     aplicarReglas: aplicarReglas,
+    leerUmbrales: leerUmbrales,
     generarResumenOperativo: generarResumenOperativo
   };
 })(window);

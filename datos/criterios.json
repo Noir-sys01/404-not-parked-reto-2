@@ -31,5 +31,11 @@
       7,
       9
     ]
+  },
+  "recomendacion": {
+    "_nota": "Umbrales de las reglas del resumen operativo. min_altos_en_pico: R1 (cantidad). umbral_carga: R2 (proporción; cuenta si es igual o mayor). umbral_predominio: R3 a R5 (proporción; debe superarse).",
+    "min_altos_en_pico": 3,
+    "umbral_carga": 0.4,
+    "umbral_predominio": 0.5
   }
 }

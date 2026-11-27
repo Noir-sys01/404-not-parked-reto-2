@@ -86,6 +86,22 @@
     });
 
     todosLosReportes = window.Criticidad.recalcularTodos(combinados, viasData, criteriosData);
+    mostrarAvisoDatos();
+  }
+
+  // Avisa en pantalla si algún reporte se omitió por datos inválidos (por ejemplo, una cuadra que no está en vias.json).
+  function mostrarAvisoDatos() {
+    const el = document.getElementById("aviso-datos");
+    if (!el) return;
+    const errores = window.Criticidad.obtenerErrores();
+    if (errores.length === 0) {
+      el.style.display = "none";
+      el.textContent = "";
+      return;
+    }
+    el.style.display = "block";
+    el.textContent = "Atención: " + errores.length + " reporte(s) omitido(s) por datos inválidos: " +
+      errores.map(function (e) { return e.id + " (" + e.mensaje + ")"; }).join("; ");
   }
 
   function resolverRutaFoto(foto) {
@@ -223,7 +239,7 @@
   }
 
   function actualizarResumenOperativo(listaFiltrada) {
-    const top5 = window.Resumen.generarResumenOperativo(listaFiltrada, viasData);
+    const top5 = window.Resumen.generarResumenOperativo(listaFiltrada, viasData, criteriosData);
     const contenedor = document.getElementById("lista-resumen");
 
     if (top5.length === 0) {
