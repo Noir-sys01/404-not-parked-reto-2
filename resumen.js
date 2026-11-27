@@ -7,7 +7,8 @@
   const UMBRALES_POR_DEFECTO = {
     min_altos_en_pico: 3,
     umbral_carga: 0.4,
-    umbral_predominio: 0.5
+    umbral_predominio: 0.5,
+    min_reportes_para_reglas: 3
   };
 
   function leerUmbrales(criterios) {
@@ -15,7 +16,8 @@
     return {
       min_altos_en_pico: r.min_altos_en_pico !== undefined ? r.min_altos_en_pico : UMBRALES_POR_DEFECTO.min_altos_en_pico,
       umbral_carga: r.umbral_carga !== undefined ? r.umbral_carga : UMBRALES_POR_DEFECTO.umbral_carga,
-      umbral_predominio: r.umbral_predominio !== undefined ? r.umbral_predominio : UMBRALES_POR_DEFECTO.umbral_predominio
+      umbral_predominio: r.umbral_predominio !== undefined ? r.umbral_predominio : UMBRALES_POR_DEFECTO.umbral_predominio,
+      min_reportes_para_reglas: r.min_reportes_para_reglas !== undefined ? r.min_reportes_para_reglas : UMBRALES_POR_DEFECTO.min_reportes_para_reglas
     };
   }
 
@@ -40,42 +42,51 @@
       };
     }
 
-    // Regla R2: Predomina vehículo de carga descargando (>= 40 %)
+    // Regla R2: pocos reportes en la cuadra. Con tan pocos datos no tiene sentido hablar de "predominio",
+    // así que se recomienda seguimiento en lugar de aplicar las reglas por porcentaje (R3 a R6).
+    if (n < u.min_reportes_para_reglas) {
+      return {
+        recomendacion: "Seguimiento: reunir más reportes antes de intervenir",
+        regla: "Regla R2: solo " + n + " reporte(s) en la cuadra (mínimo " + u.min_reportes_para_reglas + " para aplicar las reglas R3 a R6)."
+      };
+    }
+
+    // Regla R3: Predomina vehículo de carga descargando (>= 40 %)
     if (n > 0 && (aCarga / n) >= u.umbral_carga) {
       return {
         recomendacion: "Revisar horario de cargue y descargue",
-        regla: "Regla R2: Predomina vehículo de carga (" + aCarga + " de " + n + " reportes, ≥ " + porcentaje(u.umbral_carga) + ")."
+        regla: "Regla R3: Predomina vehículo de carga (" + aCarga + " de " + n + " reportes, ≥ " + porcentaje(u.umbral_carga) + ")."
       };
     }
 
-    // Regla R3: Predomina invasión de andén (> 50 %)
+    // Regla R4: Predomina invasión de andén (> 50 %)
     if (n > 0 && (cAnden / n) > u.umbral_predominio) {
       return {
         recomendacion: "Operativo de espacio público y recuperación de andén",
-        regla: "Regla R3: Predomina invasión de andén (" + cAnden + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
+        regla: "Regla R4: Predomina invasión de andén (" + cAnden + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
       };
     }
 
-    // Regla R4: Predomina doble fila / vía prohibida (> 50 %)
+    // Regla R5: Predomina doble fila / vía prohibida (> 50 %)
     if (n > 0 && (cDoble / n) > u.umbral_predominio) {
       return {
         recomendacion: "Control de estacionamiento en vía prohibida y señalización",
-        regla: "Regla R4: Predomina doble fila / vía prohibida (" + cDoble + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
+        regla: "Regla R5: Predomina doble fila / vía prohibida (" + cDoble + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
       };
     }
 
-    // Regla R5: Predomina bloqueo de rampa, cebra o paradero (> 50 %)
+    // Regla R6: Predomina bloqueo de rampa, cebra o paradero (> 50 %)
     if (n > 0 && (cBloqueo / n) > u.umbral_predominio) {
       return {
         recomendacion: "Despeje prioritario de cruces peatonales, rampas y paraderos",
-        regla: "Regla R5: Predomina bloqueo de rampa, cebra o paradero (" + cBloqueo + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
+        regla: "Regla R6: Predomina bloqueo de rampa, cebra o paradero (" + cBloqueo + " de " + n + " reportes, > " + porcentaje(u.umbral_predominio) + ")."
       };
     }
 
-    // Regla R6: Reincidencia mixta
+    // Regla R7: Reincidencia mixta
     return {
       recomendacion: "Ronda preventiva mixta (tránsito y espacio público)",
-      regla: "Regla R6: Reincidencia mixta sin categoría única mayoritaria (" + n + " reportes)."
+      regla: "Regla R7: Reincidencia mixta sin categoría única mayoritaria (" + n + " reportes)."
     };
   }
 
