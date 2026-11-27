@@ -1,0 +1,8 @@
+digraph G { graph [bgcolor="white", pad="0.3", nodesep="0.35", ranksep="0.45", fontname="DejaVu Sans", fontsize=22, labelloc=t]; node [shape=box, style="rounded,filled", fillcolor="#edf5fa", color="#194c6b", fontname="DejaVu Sans", fontsize=12, margin="0.18,0.12"]; edge [color="#56758b", fontname="DejaVu Sans", fontsize=10]; label="Arquitectura lógica | 404-not-parked"; u [label="Usuario: registro / consulta",fillcolor="#194c6b",fontcolor=white]; ui [label="Presentación
+HTML + CSS"]; js [label="Lógica de aplicación
+JavaScript"]; geo [label="Geolocalización
+GPS / selección manual"]; map [label="Leaflet + OpenStreetMap
+Marcadores y mapa de calor"]; data [label="Datos de prueba
+JSON"]; photo [label="Evidencia fotográfica
+Anonimización por verificar"]; store [label="Persistencia definitiva
+Por confirmar",style="rounded,dashed"]; u->ui; ui->js; js->geo; js->map; js->data; js->photo; js->store [style=dashed]; }
