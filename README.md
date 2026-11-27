@@ -23,13 +23,13 @@ Aplicación web para reportar mal parqueo e invasión del espacio público, calc
 * `datos/vias.json` — Clasificación confirmada de las 5 cuadras (`29H3 - tramo 1`, `29H3 - tramo 2`, `29H3 - tramo 3` como `arterial`; `29I` y `29I1` como `secundaria`).
 * `datos/criterios.json` — Pesos por categoría, tipo de vía y franja horaria, rangos de criticidad y horas pico.
 * `datos/reportes.json` — 37 registros reales levantados en campo (`MP-001` a `MP-037`).
-* `datos/fotos/` — Carpeta para las 37 fotografías anonimizadas (`mp-001.png` a `mp-037.png`).
+* `datos/fotos/` — Carpeta para las 37 fotografías anonimizadas (`mp-001.jpeg` a `mp-037.jpeg`).
 * `documentos/` — Carpeta para los entregables PDF (anexo de evidencia de campo, diagrama de arquitectura y bitácora de ingeniería).
 
 ## Cómo abrirlo localmente
 1. Abrir la carpeta del proyecto en **Visual Studio Code**.
 2. Hacer clic derecho sobre `index.html` y elegir **"Open with Live Server"** (necesario para que `fetch()` lea los archivos de `datos/`).
-3. Antes de publicar en GitHub Pages, copiar las 37 fotos anonimizadas (`mp-001.png` a `mp-037.png`) dentro de `datos/fotos/`.
+3. Antes de publicar en GitHub Pages, copiar las 37 fotos anonimizadas (`mp-001.jpeg` a `mp-037.jpeg`) dentro de `datos/fotos/`.
 
 ## IA utilizada
 * **Claude (Anthropic):** Apoyo en la etapa inicial para el análisis de los requerimientos funcionales (RF-01 a RF-06), la estructura preliminar del prototipo, el planteamiento de los criterios de criticidad y la preparación inicial del levantamiento de datos en campo.
