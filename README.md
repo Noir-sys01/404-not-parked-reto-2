@@ -5,12 +5,12 @@ Aplicación web para reportar mal parqueo e invasión del espacio público, calc
 ## Integrantes y roles
 | Integrante | Rol |
 |---|---|
-| [Juan Vilardy Integrante 1] | Integrador del mapa e instrucciones para la IA y Analista de campo y privacidad |
-| [Joel Ariza Integrante 3] | Ingeniero de lógica y clasificación |
-| [yeam Ariza Integrante 4] | Diseñador de interfaz y documentador |
+| Juan Vilardy | Integrador del mapa e instrucciones para la IA y Analista de campo y privacidad |
+| Joel Ariza | Ingeniero de lógica y clasificación |
+| Yoan Ariza | Diseñador de interfaz y documentador |
 
 ## Prototipo publicado
-[Pegar aquí el enlace de GitHub Pages tras activar Pages en el repositorio]
+https://noir-sys01.github.io/404-not-parked-reto-2/
 
 ## Estructura del proyecto
 * `index.html` — Interfaz principal con dos vistas: **Tablero y Mapa** y **Captura rápida (< 30 s)**.
